@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Circuit de Chimay — Vitesse, Heritage et Legende Trappiste depuis 1929. 4,52 km de piste routiere legendaire en Belgique." />
+  <meta property="og:title" content="Circuit de Chimay — Speed, Heritage and Trappist Legend Since 1929" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://circuit.be/" />
+  <title>Circuit de Chimay — Speed, Heritage &amp; Trappist Legend Since 1929</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <div id="scroll-progress" aria-hidden="true"></div>  <header id="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="Circuit de Chimay Accueil">
+        <div class="logo-mark" aria-hidden="true">C</div>
+        <div class="logo-text">
+          <span class="logo-name">Circuit de Chimay</span>
+          <span class="logo-sub">Since 1929 &middot; Belgium</span>
+        </div>
+      </a>
+      <nav class="main-nav" role="navigation" aria-label="Navigation principale">
+        <div class="nav-item">
+          <a href="#events" class="nav-link">Evenements &amp; Billetterie
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
+          </a>
+          <div class="mega-dropdown" role="menu">
+            <div class="dd-label">Evenements Phares</div>
+            <a href="#" role="menuitem">Chimay Open Trophy</a>
+            <a href="#" role="menuitem">Authentic Classic Bikes</a>
+            <a href="#" role="menuitem">European Bug-In</a>
+            <a href="#" role="menuitem">Supermoto Chimay</a>
+            <a href="#" role="menuitem">Ford Escort Rally Special</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#building" class="nav-link">Infrastructures &amp; Restaurant
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
+          </a>
+          <div class="mega-dropdown" role="menu">
+            <div class="dd-label">Le Complexe</div>
+            <a href="#" role="menuitem">Nouveau Batiment VIP</a>
+            <a href="#" role="menuitem">Terrasse Panoramique</a>
+            <a href="#" role="menuitem">Restaurant Gastronomique</a>
+            <a href="#" role="menuitem">Espace Trappiste</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#trackdays" class="nav-link">Exploiter la Piste
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
+          </a>
+          <div class="mega-dropdown" role="menu">
+            <div class="dd-label">Pour les Pilotes</div>
+            <a href="#" role="menuitem">Trackdays Auto</a>
+            <a href="#" role="menuitem">Trackdays Moto</a>
+            <div class="dd-label">Entreprises</div>
+            <a href="#" role="menuitem">Seminaires &amp; Incentives</a>
+            <a href="#" role="menuitem">Privatisation B2B</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#footer" class="nav-link">Infos Pratiques
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
+          </a>
+          <div class="mega-dropdown" role="menu">
+            <div class="dd-label">Avant de Venir</div>
+            <a href="#" role="menuitem">Acces &amp; Parkings</a>
+            <a href="#" role="menuitem">Camping</a>
+            <a href="#" role="menuitem">Normes Bruit dB</a>
+            <a href="#" role="menuitem">Espace Medias</a>
+          </div>
+        </div>
+      </nav>
+      <div class="header-cta">
+        <div class="lang-toggle" aria-label="Langue">
+          <button class="active" aria-pressed="true">FR</button>
+          <button aria-pressed="false">NL</button>
+          <button aria-pressed="false">EN</button>
+        </div>
+        <a href="#events" class="btn-tickets" id="header-tickets-btn">TICKETS</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu mobile">
+    <button class="mobile-close-btn" id="mobile-close-btn" aria-label="Fermer le menu mobile">✕</button>
+    <nav>
+      <a href="#events" class="mobile-nav-link">Événements &amp; Billets</a>
+      <a href="#building" class="mobile-nav-link">Infrastructures</a>
+      <a href="#track" class="mobile-nav-link">La Piste</a>
+      <a href="#trackdays" class="mobile-nav-link">Trackdays &amp; B2B</a>
+      <a href="#footer" class="mobile-nav-link">Infos Pratiques</a>
+    </nav>
+    <a href="#events" class="mobile-tickets">Réserver mes Billets</a>
+  </div>  <main id="main-content">
+    <section id="hero" aria-labelledby="hero-title">
+      <div class="hero-slides" aria-hidden="true">
+        <div class="hero-slide active" data-slide="0">
+          <img src="assets/hero_circuit_chimay.png" alt="Vue aerienne du Circuit de Chimay" loading="eager" fetchpriority="high"/>
+        </div>
+        <div class="hero-slide" data-slide="1">
+          <img src="assets/event_chimay_moto.png" alt="Course moto au Circuit de Chimay" loading="lazy"/>
+        </div>
+        <div class="hero-slide" data-slide="2">
+          <img src="assets/building_restaurant_chimay.png" alt="Batiment VIP du Circuit de Chimay" loading="lazy"/>
+        </div>
+        <div class="hero-slide" data-slide="3">
+          <img src="assets/trappist_beer_chimay.png" alt="Biere Trappiste de Chimay" loading="lazy"/>
+        </div>
+      </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-indicators" role="tablist" aria-label="Navigation carrousel">
+        <div class="hero-dot active" role="tab" aria-selected="true" tabindex="0" data-dot="0"></div>
+        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="1"></div>
+        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="2"></div>
+        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="3"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="eyebrow">
+            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true"><circle cx="4" cy="4" r="4" fill="#E63946"/></svg>
+            Belgique &middot; Depuis 1929 &middot; 4,52 km
+          </span>
+        </div>
+        <h1 class="hero-title" id="hero-title">Speed,<br/>Heritage<br/>&amp;&nbsp;<em>Trappist</em><br/>Legend.</h1>
+        <p class="hero-sub">Le circuit routier mythique de Chimay &mdash; la ou la vitesse rencontre l'art de vivre belge. Evenements, trackdays, restaurant panoramique et culture Trappiste depuis 1929.</p>
+        <div class="hero-actions">
+          <a href="#events" class="btn-primary" id="hero-tickets-cta">
+            Reserver mes Billets
+            <span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+          </a>
+          <a href="#track" class="btn-ghost">Decouvrir la Piste</a>
+        </div>
+      </div>
+      <div class="hero-event-banner" role="complementary">
+        <div class="event-banner-inner">
+          <div>
+            <div class="event-banner-label">Prochain evenement</div>
+            <div class="event-banner-name">Chimay Open Trophy 2026</div>
+            <div class="event-banner-date">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="2" width="10" height="9" rx="1"/><path d="M4 1v2M8 1v2M1 5h10"/></svg>
+              23&ndash;25 Mai 2026 &middot; Circuit de Chimay
+            </div>
+          </div>
+          <div class="event-banner-countdown">
+            <div class="countdown-unit"><div class="countdown-value" id="cd-days">--</div><div class="countdown-label">Jours</div></div>
+            <div class="countdown-unit"><div class="countdown-value" id="cd-hours">--</div><div class="countdown-label">Heures</div></div>
+            <div class="countdown-unit"><div class="countdown-value" id="cd-min">--</div><div class="countdown-label">Min</div></div>
+            <div class="countdown-unit"><div class="countdown-value" id="cd-sec">--</div><div class="countdown-label">Sec</div></div>
+          </div>
+          <div class="event-banner-cta">
+            <a href="#" class="btn-primary">
+              Acheter Billets / Pass VIP
+              <span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="stats-banner reveal">
+      <div class="stats-inner">
+        <div class="stat-item"><div class="stat-value">4<span>.</span>52<span>km</span></div><div class="stat-label">Trace routier</div></div>
+        <div class="stat-item"><div class="stat-value">95<span>+</span></div><div class="stat-label">Ans d'histoire</div></div>
+        <div class="stat-item"><div class="stat-value">5<span>+</span></div><div class="stat-label">Evenements / an</div></div>
+        <div class="stat-item"><div class="stat-value">300<span>km/h</span></div><div class="stat-label">Vitesse max moto</div></div>
+      </div>
+    </div>    <section id="building" aria-labelledby="building-title">
+      <div class="section-container">
+        <div class="building-grid">
+          <div class="building-visual reveal">
+            <div class="building-visual-inner">
+              <img src="assets/building_restaurant_chimay.png" alt="Batiment VIP et restaurant panoramique" loading="lazy"/>
+            </div>
+          </div>
+          <div class="building-text">
+            <span class="eyebrow reveal">Le Complexe</span>
+            <h2 id="building-title" class="reveal">Plus qu'un Circuit.<br/><em style="color:var(--color-gold)">Une Destination.</em></h2>
+            <p class="reveal">Au coeur du mythique circuit routier, notre nouveau batiment d'accueil redefinit l'experience motorsport belge. Il integre un restaurant gastronomique, une brasserie et la legendaire Trappiste de Chimay.</p>
+            <p class="reveal">La terrasse panoramique offre une vue a 180 degres sur la ligne droite des stands — le meilleur point de vue du circuit.</p>
+            <div class="building-features reveal">
+              <div class="feature-chip"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l3 3"/></svg> Terrasse Panoramique 180</div>
+              <div class="feature-chip"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M6 10h8M10 6v8"/></svg> Restaurant Gastronomique</div>
+              <div class="feature-chip"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 10h6M5 7c0-2.8 2.2-5 5-5s5 2.2 5 5v3H5V7z"/><path d="M5 10v3a2 2 0 002 2h6a2 2 0 002-2v-3"/></svg> Bieres Trappistes</div>
+              <div class="feature-chip"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="6" width="14" height="10" rx="2"/><path d="M7 6V5a3 3 0 016 0v1"/></svg> Espace VIP Paddock</div>
+            </div>
+            <div class="reveal">
+              <a href="#" class="btn-primary">Reserver une Table<span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a>
+            </div>
+          </div>
+        </div>
+        <div class="hosp-cards">
+          <div class="hosp-card reveal">
+            <div class="hosp-card-inner">
+              <div class="hosp-img"><img src="assets/building_restaurant_chimay.png" alt="Restaurant du Circuit" loading="lazy"/></div>
+              <div class="hosp-body">
+                <div class="hosp-tag">Gastronomie</div>
+                <div class="hosp-title">Le Restaurant du Circuit</div>
+                <p class="hosp-desc">Vue imprenable sur la ligne droite. Cuisine belge gastronomique et accords Trappistes.</p>
+                <a href="#" class="hosp-cta-link">Reserver <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+              </div>
+            </div>
+          </div>
+          <div class="hosp-card reveal" style="transition-delay:.12s">
+            <div class="hosp-card-inner">
+              <div class="hosp-img"><img src="assets/hero_circuit_chimay.png" alt="Terrasse panoramique" loading="lazy"/></div>
+              <div class="hosp-body">
+                <div class="hosp-tag">VIP Experience</div>
+                <div class="hosp-title">Terrasse Panoramique</div>
+                <p class="hosp-desc">En hauteur sur la ligne droite — meilleur point de vue du circuit en formule privative.</p>
+                <a href="#" class="hosp-cta-link">Privatiser <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+              </div>
+            </div>
+          </div>
+          <div class="hosp-card reveal" style="transition-delay:.24s">
+            <div class="hosp-card-inner">
+              <div class="hosp-img"><img src="assets/trappist_beer_chimay.png" alt="Espace Trappiste" loading="lazy"/></div>
+              <div class="hosp-body">
+                <div class="hosp-tag">Art de Vivre Belge</div>
+                <div class="hosp-title">Espace Trappiste</div>
+                <p class="hosp-desc">Bieres et fromages de Chimay, degustations guidees et accords gastronomiques.</p>
+                <a href="#" class="hosp-cta-link">Decouvrir <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="section-divider"></div>    <section id="events" aria-labelledby="events-title">
+      <div class="section-container">
+        <div class="events-header">
+          <div>
+            <span class="eyebrow eyebrow--red reveal">Calendrier 2026</span>
+            <h2 id="events-title" class="reveal">Evenements<br/>&amp; Billetterie</h2>
+          </div>
+          <div class="reveal"><p>Cinq rendez-vous incontournables sur le mythique trace routier belge.</p></div>
+        </div>
+        <div class="filter-tabs" role="tablist" aria-label="Filtrer les evenements">
+          <button class="filter-tab active" role="tab" aria-selected="true" data-filter="all">Tous</button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="moto">Motos Modernes</button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="classics">Classics &amp; Vintage</button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="auto">Autos &amp; Rallye</button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="rassemblement">Rassemblements</button>
+        </div>
+        <div class="events-grid" id="events-grid" aria-live="polite">
+          <article class="event-card visible-card reveal" data-category="moto">
+            <div class="event-card-inner">
+              <div class="event-img">
+                <img src="assets/event_chimay_moto.png" alt="Chimay Open Trophy 2026" loading="lazy"/>
+                <div class="event-img-overlay" aria-hidden="true"></div>
+                <span class="event-status open" role="status">Billetterie Ouverte</span>
+              </div>
+              <div class="event-body">
+                <div class="event-category">Motos Modernes &middot; IRRC &middot; Superbike</div>
+                <h3 class="event-name">Chimay Open Trophy 2026</h3>
+                <div class="event-date"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="2" width="10" height="9" rx="1"/><path d="M4 1v2M8 1v2M1 5h10"/></svg>23 &ndash; 25 Mai 2026</div>
+                <div class="event-actions"><a href="#" class="btn-programme">Programme</a><a href="#" class="btn-reserve">Reserver mon Billet</a></div>
+              </div>
+            </div>
+          </article>
+          <article class="event-card visible-card reveal" data-category="classics" style="transition-delay:.08s">
+            <div class="event-card-inner">
+              <div class="event-img">
+                <img src="assets/event_chimay_moto.png" alt="Authentic Classic Bikes" loading="lazy"/>
+                <div class="event-img-overlay" aria-hidden="true"></div>
+                <span class="event-status open" role="status">Billetterie Ouverte</span>
+              </div>
+              <div class="event-body">
+                <div class="event-category">Classics &amp; Vintage &middot; Side-Cars</div>
+                <h3 class="event-name">Authentic Classic Bikes</h3>
+                <div class="event-date"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="2" width="10" height="9" rx="1"/><path d="M4 1v2M8 1v2M1 5h10"/></svg>12 &ndash; 13 Juillet 2026</div>
+                <div class="event-actions"><a href="#" class="btn-programme">Programme</a><a href="#" class="btn-reserve">Reserver mon Billet</a></div>
+              </div>
+            </div>
+          </article>
+          <article class="event-card visible-card reveal" data-category="rassemblement" style="transition-delay:.16s">
+            <div class="event-card-inner">
+              <div class="event-img">
+                <img src="assets/vw_bugin_event.png" alt="European Bug-In VW" loading="lazy"/>
+                <div class="event-img-overlay" aria-hidden="true"></div>
+                <span class="event-status soon" role="status">Bientot</span>
+              </div>
+              <div class="event-body">
+                <div class="event-category">Rassemblement Mondial &middot; VW</div>
+                <h3 class="event-name">European Bug-In</h3>
+                <div class="event-date"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="2" width="10" height="9" rx="1"/><path d="M4 1v2M8 1v2M1 5h10"/></svg>2 &ndash; 3 Aout 2026</div>
+                <div class="event-actions"><a href="#" class="btn-programme">Programme</a><a href="#" class="btn-reserve">Reserver mon Billet</a></div>
+              </div>
+            </div>
+          </article>
+          <article class="event-card visible-card reveal" data-category="moto" style="transition-delay:.24s">
+            <div class="event-card-inner">
+              <div class="event-img">
+                <img src="assets/supermoto_event.png" alt="Supermoto Chimay" loading="lazy"/>
+                <div class="event-img-overlay" aria-hidden="true"></div>
+                <span class="event-status open" role="status">Billetterie Ouverte</span>
+              </div>
+              <div class="event-body">
+                <div class="event-category">Supermoto &middot; Terre &amp; Asphalte</div>
+                <h3 class="event-name">Supermoto Chimay</h3>
+                <div class="event-date"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="2" width="10" height="9" rx="1"/><path d="M4 1v2M8 1v2M1 5h10"/></svg>6 &ndash; 7 Septembre 2026</div>
+                <div class="event-actions"><a href="#" class="btn-programme">Programme</a><a href="#" class="btn-reserve">Reserver mon Billet</a></div>
+              </div>
+            </div>
+          </article>
+          <article class="event-card visible-card reveal" data-category="auto" style="transition-delay:.32s">
+            <div class="event-card-inner">
+              <div class="event-img">
+                <img src="assets/hero_circuit_chimay.png" alt="Ford Escort Rally Special" loading="lazy"/>
+                <div class="event-img-overlay" aria-hidden="true"></div>
+                <span class="event-status soon" role="status">Bientot</span>
+              </div>
+              <div class="event-body">
+                <div class="event-category">Autos &amp; Rallye &middot; Nocturne</div>
+                <h3 class="event-name">Ford Escort Rally Special</h3>
+                <div class="event-date"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="2" width="10" height="9" rx="1"/><path d="M4 1v2M8 1v2M1 5h10"/></svg>18 &ndash; 19 Octobre 2026</div>
+                <div class="event-actions"><a href="#" class="btn-programme">Programme</a><a href="#" class="btn-reserve">Reserver mon Billet</a></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <div class="section-divider"></div>    <section id="track" aria-labelledby="track-title">
+      <div class="track-bg-text" aria-hidden="true">4,52 km</div>
+      <div class="section-container">
+        <div class="track-layout">
+          <div class="track-info">
+            <span class="eyebrow reveal">Le Trace Legendaire</span>
+            <h2 id="track-title" class="reveal">La Piste<br/><em style="color:var(--color-racing)">Routiere</em></h2>
+            <p class="reveal">Circuit unique trace sur les routes publiques depuis 1929. 4,52 km de virages rapides, chicanes techniques et une ligne droite ou les motos atteignent 300 km/h.</p>
+            <div class="track-toggle reveal" role="group" aria-label="Selectionner le trace">
+              <button class="track-toggle-btn active" id="btn-modern" aria-pressed="true">Trace Actuel 4,52 km</button>
+              <button class="track-toggle-btn" id="btn-historic" aria-pressed="false">Trace Historique 10,8 km</button>
+            </div>
+            <div class="track-specs reveal">
+              <div class="track-spec"><div class="track-spec-value">4,52 km</div><div class="track-spec-label">Longueur actuelle</div></div>
+              <div class="track-spec"><div class="track-spec-value">10,8 km</div><div class="track-spec-label">Trace historique</div></div>
+              <div class="track-spec"><div class="track-spec-value">7</div><div class="track-spec-label">Virages</div></div>
+              <div class="track-spec"><div class="track-spec-value">300 km/h</div><div class="track-spec-label">Vitesse max</div></div>
+            </div>
+            <div class="reveal"><a href="#" class="btn-ghost">Telecharger le Plan Complet</a></div>
+          </div>
+          <div class="track-svg-container reveal">
+            <div class="track-svg-inner">
+              <svg id="track-svg-root" class="track-svg" viewBox="0 0 520 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Carte interactive du Circuit de Chimay">
+                <title>Circuit de Chimay — Trace interactif</title>
+                <defs><pattern id="track-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs>
+                <rect width="520" height="420" fill="url(#track-grid)"/>
+                <path class="track-path-modern" d="M 55 205 C 55 178,75 148,108 136 C 140 124,178 118,210 114 C 250 109,292 107,322 115 C 356 124,382 142,400 160 C 425 182,438 210,440 235 C 443 258,437 282,420 298 C 398 320,365 330,332 334 C 298 338,265 334,240 326 C 208 314,188 292,178 270 C 165 242,166 216,170 196 C 176 178,192 166,210 162 C 230 157,252 160,266 172 C 280 184,284 202,277 218 C 268 236,248 244,228 241 C 206 237,190 220,188 200 C 186 184,197 170,214 166 L 228 164 M 420 298 C 397 322,358 338,315 342 C 272 346,226 339,188 322 C 142 303,106 268,82 234 C 60 202,55 205,55 205"/>
+                <path class="track-path-historic" d="M 18 215 C 18 170,48 128,88 106 C 128 84,182 76,230 74 C 282 72,330 82,374 102 C 416 122,446 152,468 186 C 490 220,500 258,498 294 C 496 330,480 364,452 385 C 422 406,382 414,338 416 C 284 418,224 410,172 390 C 120 370,72 334,44 296 C 22 265,18 215,18 215"/>
+                <g class="track-hotspot" data-tip="Chicane des Aubepines — zone de freinage" data-pos="322,120" tabindex="0" role="button" aria-label="Chicane des Aubepines">
+                  <circle cx="322" cy="120" r="7" fill="#D4AF37" opacity="0.9"/><circle cx="322" cy="120" r="12" fill="#D4AF37" opacity="0.15"/>
+                  <text class="track-label" x="330" y="116">1</text>
+                </g>
+                <g class="track-hotspot" data-tip="Ligne Droite des Stands — Zone Spectateurs" data-pos="140,185" tabindex="0" role="button" aria-label="Ligne droite des stands">
+                  <circle cx="140" cy="185" r="7" fill="#34d399" opacity="0.9"/><circle cx="140" cy="185" r="12" fill="#34d399" opacity="0.15"/>
+                  <text class="track-label" x="148" y="181" fill="rgba(255,255,255,0.4)">S</text>
+                </g>
+                <g class="track-hotspot" data-tip="Grand Virage — 300 km/h vitesse max moto" data-pos="438,240" tabindex="0" role="button" aria-label="Grand virage">
+                  <circle cx="438" cy="240" r="7" fill="#E63946" opacity="0.9"/><circle cx="438" cy="240" r="12" fill="#E63946" opacity="0.15"/>
+                  <text class="track-label" x="447" y="236">2</text>
+                </g>
+                <g class="track-hotspot" data-tip="Zone Spectateurs Nord — Chicane interieure" data-pos="310,340" tabindex="0" role="button" aria-label="Zone spectateurs nord">
+                  <circle cx="310" cy="340" r="7" fill="#818cf8" opacity="0.9"/><circle cx="310" cy="340" r="12" fill="#818cf8" opacity="0.15"/>
+                  <text class="track-label" x="318" y="336">3</text>
+                </g>
+                <g transform="translate(55,200)">
+                  <rect x="-12" y="-10" width="32" height="14" rx="3" fill="#E63946" opacity="0.2"/>
+                  <text font-size="7" fill="rgba(255,255,255,0.55)" text-anchor="middle" x="4" y="3" font-family="sans-serif" font-weight="700">START</text>
+                </g>
+                <foreignObject id="track-tooltip" x="0" y="0" width="200" height="36" style="opacity:0;pointer-events:none;transition:opacity .2s ease;">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="background:rgba(17,19,24,0.97);border:1px solid rgba(212,175,55,0.4);border-radius:8px;padding:6px 12px;font-size:11px;color:white;font-family:sans-serif;white-space:nowrap;font-weight:500;" id="track-tooltip-text"></div>
+                </foreignObject>
+              </svg>
+            </div>
+            <div id="track-mobile-info" class="track-mobile-info" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="section-divider"></div>    <section id="trackdays" aria-labelledby="trackdays-title">
+      <div class="section-container">
+        <div class="td-header">
+          <span class="eyebrow eyebrow--blue reveal">Piste &amp; Business</span>
+          <h2 id="trackdays-title" class="reveal">Exploitez La Piste</h2>
+          <p class="reveal">Pour les pilotes et les entreprises — le Circuit de Chimay s'ouvre a vous toute l'annee.</p>
+        </div>
+        <div class="td-grid">
+          <div class="td-card reveal">
+            <div class="td-card-inner">
+              <div class="td-card-header">
+                <div class="td-card-icon"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="13" cy="9" r="3"/><path d="M5 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
+                <div class="td-card-title">Pour les Pilotes</div>
+                <div class="td-card-sub">Roulages libres Auto &amp; Moto</div>
+              </div>
+              <div class="td-card-body">
+                <ul class="td-feature-list">
+                  <li class="td-feature"><svg viewBox="0 0 16 16" fill="none" stroke="#34d399" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Journees trackday auto &amp; moto toute la saison</li>
+                  <li class="td-feature"><svg viewBox="0 0 16 16" fill="none" stroke="#34d399" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Normes bruit dB strictes — verifiez avant inscription</li>
+                  <li class="td-feature"><svg viewBox="0 0 16 16" fill="none" stroke="#34d399" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Briefings securite, medical sur place</li>
+                  <li class="td-feature"><svg viewBox="0 0 16 16" fill="none" stroke="#34d399" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Chronometrage RIS Timing disponible</li>
+                  <li class="td-feature"><svg viewBox="0 0 16 16" fill="none" stroke="#34d399" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Paddock couvert, restauration et Trappiste</li>
+                </ul>
+                <a href="#" class="btn-primary" style="display:inline-flex;">Voir le Calendrier<span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="td-card reveal" style="transition-delay:.12s">
+            <div class="td-card-inner">
+              <div class="td-card-header">
+                <div class="td-card-icon"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="8" width="20" height="14" rx="2"/><path d="M9 8V6a4 4 0 018 0v2"/></svg></div>
+                <div class="td-card-title">Entreprises &amp; B2B</div>
+                <div class="td-card-sub">Privatisation &amp; Incentives</div>
+              </div>
+              <div class="td-card-body">
+                <ul class="td-feature-list">
+                  <li class="td-feature"><svg viewBox="0 0 16 16" fill="none" stroke="#34d399" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Privatisation complete du circuit et batiment VIP</li>
+                  <li class="td-feature"><svg viewBox="0 0 16 16" fill="none" stroke="#34d399" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Seminaires, team building et formations</li>
+                  <li class="td-feature"><svg viewBox="0 0 16 16" fill="none" stroke="#34d399" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Terrasse VIP privative avec vue sur la piste</li>
+                  <li class="td-feature"><svg viewBox="0 0 16 16" fill="none" stroke="#34d399" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Catering premium — Trappiste et gastronomie belge</li>
+                  <li class="td-feature"><svg viewBox="0 0 16 16" fill="none" stroke="#34d399" stroke-width="1.5" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Experiences pilotage pour vos collaborateurs</li>
+                </ul>
+                <a href="#" class="btn-ghost" style="display:inline-flex;">Demander un Devis</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>    <footer id="footer" role="contentinfo">
+      <div class="section-container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="logo" href="/"><div class="logo-mark" aria-hidden="true">C</div><div class="logo-text"><span class="logo-name">Circuit de Chimay</span><span class="logo-sub">Since 1929 &middot; Belgium</span></div></a>
+            <p>Le circuit routier legendaire du coeur de la Wallonie. Vitesse, heritage et culture Trappiste depuis 1929.</p>
+            <div class="footer-socials" aria-label="Reseaux sociaux">
+              <a href="#" class="social-icon" aria-label="Facebook"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2h-2a3 3 0 00-3 3v2H5v3h2v5h3V10h2l1-3h-3V5a1 1 0 011-1h2V2z"/></svg></a>
+              <a href="#" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3"/><circle cx="8" cy="8" r="3"/></svg></a>
+              <a href="#" class="social-icon" aria-label="YouTube"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="4" width="14" height="9" rx="2"/><path d="M6.5 6.5l4 2-4 2v-4z" fill="currentColor" stroke="none"/></svg></a>
+              <a href="#" class="social-icon" aria-label="X"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M12.6 2h2.4l-5.3 6 6.3 8h-4.8l-3.8-5-4.4 5H.6l5.6-6.5L.2 2h5l3.4 4.5L12.6 2zm-.9 12.5h1.3L4.3 3.4H3z"/></svg></a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">Evenements</div>
+            <nav class="footer-links" aria-label="Evenements">
+              <a href="#">Chimay Open Trophy</a>
+              <a href="#">Authentic Classic Bikes</a>
+              <a href="#">European Bug-In</a>
+              <a href="#">Supermoto Chimay</a>
+              <a href="#">Ford Escort Rally Special</a>
+            </nav>
+          </div>
+          <div>
+            <div class="footer-col-title">Infos Pratiques</div>
+            <nav class="footer-links" aria-label="Infos pratiques">
+              <a href="#">Acces &amp; Parkings</a>
+              <a href="#">Camping</a>
+              <a href="#">Logements a Chimay</a>
+              <a href="#">Horaires</a>
+              <a href="#">Normes Bruit dB</a>
+              <a href="#">Espace Medias</a>
+            </nav>
+          </div>
+          <div class="footer-newsletter">
+            <div class="footer-col-title">Newsletter Preventes</div>
+            <p>Soyez les premiers informes des ouvertures de billetterie #CircuitDeChimay</p>
+            <form class="newsletter-form" action="#" method="post">
+              <label for="newsletter-email" class="visually-hidden">Votre email</label>
+              <input type="email" id="newsletter-email" name="email" class="newsletter-input" placeholder="votre@email.com" required autocomplete="email"/>
+              <button type="submit" class="newsletter-submit">Rejoindre</button>
+            </form>
+          </div>
+        </div>
+        <div class="sponsors-row" aria-label="Partenaires">
+          <span class="sponsors-label">Partenaires</span>
+          <span class="sponsor-item">Chimay Trappist</span>
+          <span class="sponsor-item">IRRC</span>
+          <span class="sponsor-item">Federation Wallonie-Bruxelles</span>
+          <span class="sponsor-item">Tourisme Wallonie</span>
+          <span class="sponsor-item">RIS Timing</span>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-bottom-text">2026 Circuit de Chimay ASBL &middot; Rue du Virton, 6460 Chimay, Belgique</p>
+          <nav class="footer-legal" aria-label="Liens legaux">
+            <a href="#">Mentions legales</a>
+            <a href="#">Confidentialite</a>
+            <a href="#">CGV</a>
+            <a href="#">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </main>
+  <button id="back-to-top" aria-label="Retourner en haut"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 14V4M4 8l5-4 5 4"/></svg></button>
+  <script src="script.js"></script>
+</body>
+</html>
