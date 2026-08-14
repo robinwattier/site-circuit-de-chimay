@@ -800,7 +800,7 @@ body::after {
    ── SECTION: ÉVÉNEMENTS & CALENDRIER ── (Silverstone style)
 ============================================================ */
 #events {
-  padding: var(--space-3xl) 0;
+  padding: var(--space-xl) 0 var(--space-2xl);
   background: var(--color-void-soft);
 }
 
