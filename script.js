@@ -270,20 +270,6 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     delay: 0.8
   });
 
-  // Stats stagger reveal
-  gsap.from('.stat-item', {
-    opacity: 0,
-    y: 24,
-    duration: 0.65,
-    stagger: 0.08,
-    ease: 'expo.out',
-    scrollTrigger: {
-      trigger: '.stats-banner',
-      start: 'top 88%',
-      toggleActions: 'play none none reverse'
-    }
-  });
-
   // Events cards stagger
   gsap.from('.event-card.visible-card', {
     opacity: 0,

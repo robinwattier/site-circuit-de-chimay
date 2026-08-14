@@ -222,13 +222,15 @@ body::after {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.95), 0 2px 10px rgba(0,0,0,0.85);
 }
 .logo-sub {
   font-size: 0.6rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: #e5b94c;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.95), 0 2px 8px rgba(0,0,0,0.8);
 }
 
 /* Desktop navigation */
@@ -250,13 +252,14 @@ body::after {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.75);
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.95), 0 2px 8px rgba(0,0,0,0.85), 0 4px 16px rgba(0,0,0,0.6);
   border-radius: 8px;
-  transition: color var(--transition-fast), background var(--transition-fast);
+  transition: color var(--transition-fast), background var(--transition-fast), text-shadow var(--transition-fast);
   white-space: nowrap;
 }
-.nav-link:hover { color: #fff; background: rgba(255,255,255,0.06); }
-.nav-link svg { width: 12px; height: 12px; transition: transform var(--transition-fast); flex-shrink: 0; }
+.nav-link:hover { color: #fff; background: rgba(0,0,0,0.25); }
+.nav-link svg { width: 12px; height: 12px; transition: transform var(--transition-fast); flex-shrink: 0; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.9)); }
 .nav-item:hover .nav-link svg { transform: rotate(180deg); }
 
 /* Mega dropdown — backdrop-blur on fixed overlay */
@@ -317,11 +320,16 @@ body::after {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.75);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.95);
   transition: color var(--transition-fast), background var(--transition-fast);
 }
 .lang-toggle button:hover,
-.lang-toggle button.active { color: #fff; background: rgba(255,255,255,0.08); }
+.lang-toggle button.active {
+  color: #fff;
+  background: rgba(0,0,0,0.35);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
+}
 
 /* ── Buttons — Button-in-Button architecture ── */
 .btn-tickets {
@@ -337,6 +345,7 @@ body::after {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border-radius: var(--radius-pill);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
   transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 .btn-tickets:hover { background: #d12d3a; transform: translateY(-1px); box-shadow: 0 8px 30px var(--color-racing-glow); }
@@ -408,6 +417,7 @@ body::after {
   width: 22px; height: 1.5px;
   background: #fff;
   border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.9);
   transition: transform var(--transition-med), opacity var(--transition-fast);
   transform-origin: center;
 }
@@ -522,10 +532,11 @@ body::after {
 }
 .hero-slide.active img { transform: scale(1); }
 
-/* Gradient overlay — atmospheric depth */
+/* Gradient overlay — atmospheric depth + top contrast scrim */
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
   background:
+    linear-gradient(to bottom, rgba(11,12,16,0.65) 0%, rgba(11,12,16,0.25) 18%, transparent 35%),
     linear-gradient(to top, rgba(11,12,16,0.97) 0%, rgba(11,12,16,0.55) 38%, rgba(11,12,16,0.15) 65%, transparent 100%),
     linear-gradient(to right, rgba(11,12,16,0.5) 0%, transparent 55%);
 }
@@ -647,39 +658,6 @@ body::after {
   margin-top: 0.15rem;
 }
 .event-banner-cta { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
-
-/* ── STATS BANNER ── */
-.stats-banner {
-  padding: var(--space-xl) 0;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-}
-.stats-inner {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-md);
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
-}
-.stat-item { text-align: center; }
-.stat-value {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: #fff;
-  line-height: 1;
-}
-.stat-value span { color: var(--color-racing); }
-.stat-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-  margin-top: 0.4rem;
-}
 
 /* ============================================================
    ── SECTION: BÂTIMENT & RESTAURANT ──
@@ -1391,7 +1369,6 @@ body::after {
   .hero-content { padding: var(--space-xl) var(--space-sm) 180px; }
   .hero-indicators { left: var(--space-sm); bottom: 100px; }
   .event-banner-inner { padding: 0.85rem var(--space-sm); gap: 0.75rem; }
-  .stats-inner { grid-template-columns: repeat(2, 1fr); padding: 0 var(--space-sm); gap: 1rem; }
   .building-visual { height: auto; aspect-ratio: 16/10; min-height: 240px; }
   .track-svg-inner { min-height: 260px; padding: var(--space-sm); }
   .td-grid { grid-template-columns: 1fr; }
@@ -1418,6 +1395,8 @@ body::after {
 }
 @media (max-width: 600px) {
   .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { justify-content: center; text-align: center; }
+  .footer-legal { justify-content: center; flex-wrap: wrap; gap: 1rem; }
   .event-banner-countdown { gap: 0.6rem; }
   .countdown-value { font-size: 1.1rem; }
   .countdown-label { font-size: 0.45rem; }
