@@ -413,7 +413,7 @@ body::after {
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-border);
 }
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .header-cta .theme-toggle { display: none; }
 }
 .theme-toggle-btn {
@@ -1682,6 +1682,13 @@ body::after {
    ── RESPONSIVE BREAKPOINTS ──
    Mobile-first, aggressive collapse below 768px
 ============================================================ */
+@media (max-width: 1200px) {
+  .main-nav { display: none !important; }
+  .lang-toggle { display: none !important; }
+  #header-tickets-btn { display: none !important; }
+  .hamburger { display: flex !important; }
+  .header-inner { overflow: visible; justify-content: space-between; }
+}
 @media (max-width: 1100px) {
   .events-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -1689,11 +1696,6 @@ body::after {
   .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
 }
 @media (max-width: 900px) {
-  .main-nav { display: none; }
-  .lang-toggle { display: none !important; }
-  #header-tickets-btn { display: none !important; }
-  .hamburger { display: flex !important; }
-  .header-inner { overflow: visible; justify-content: space-between; }
   .building-grid { grid-template-columns: 1fr; }
   .track-layout { grid-template-columns: 1fr; }
   .hosp-cards { grid-template-columns: 1fr; }
