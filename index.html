@@ -10,12 +10,61 @@
   <title>Circuit de Chimay — Speed, Heritage &amp; Trappist Legend Since 1926</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=3.0" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
-  <div id="scroll-progress" aria-hidden="true"></div>  <header id="header" role="banner">
+  <!-- LOADING SCREEN -->
+  <div id="loader" aria-label="Chargement du site Circuit de Chimay">
+    <div class="loader-inner">
+      <svg class="loader-track" viewBox="0 0 600 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="loader-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <path id="loader-track-bg" d="M 370 512 L 282 558 C 272 562 265 556 268 545 L 222 402 L 212 378 L 204 358 L 196 336 L 142 192 L 134 170 L 126 150 L 118 128 L 106 88 C 102 70 108 52 122 46 C 134 42 146 42 154 42 L 162 34 L 174 34 L 182 42 L 208 44 C 228 46 248 58 266 82 L 282 122 L 316 218 L 328 236 L 336 254 L 326 272 L 318 288 L 376 366 C 390 384 414 428 434 478 C 444 496 438 512 418 516 C 402 520 386 516 370 512 Z" stroke="rgba(255,255,255,0.08)" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="loader-track-draw" d="M 370 512 L 282 558 C 272 562 265 556 268 545 L 222 402 L 212 378 L 204 358 L 196 336 L 142 192 L 134 170 L 126 150 L 118 128 L 106 88 C 102 70 108 52 122 46 C 134 42 146 42 154 42 L 162 34 L 174 34 L 182 42 L 208 44 C 228 46 248 58 266 82 L 282 122 L 316 218 L 328 236 L 336 254 L 326 272 L 318 288 L 376 366 C 390 384 414 428 434 478 C 444 496 438 512 418 516 C 402 520 386 516 370 512 Z" stroke="#E63946" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle id="loader-racer-halo" r="18" fill="#E63946" opacity="0.25" filter="url(#loader-glow)">
+          <animateMotion dur="2.4s" fill="freeze" keyTimes="0;1" keySplines="0.42 0 0.58 1" calcMode="spline">
+            <mpath href="#loader-track-bg"/>
+          </animateMotion>
+        </circle>
+        <circle id="loader-racer" r="8" fill="#E63946" filter="url(#loader-glow)">
+          <animateMotion dur="2.4s" fill="freeze" keyTimes="0;1" keySplines="0.42 0 0.58 1" calcMode="spline">
+            <mpath href="#loader-track-bg"/>
+          </animateMotion>
+        </circle>
+      </svg>
+      <div class="loader-text">
+        <span class="loader-logo-mark">C</span>
+        <span class="loader-title">Circuit de Chimay</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var loader = document.getElementById('loader');
+      var done = false;
+      function hide() {
+        if (done) return;
+        done = true;
+        loader.classList.add('loaded');
+        setTimeout(function() { loader.remove(); }, 800);
+      }
+      window.addEventListener('load', hide);
+      setTimeout(hide, 4000);
+    })();
+  </script>
+
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <header id="header" role="banner" style="background-color: #0B0C10 !important;">
     <div class="header-inner">
       <a href="/" class="logo" aria-label="Circuit de Chimay Accueil">
         <div class="logo-mark" aria-hidden="true">C</div>
@@ -75,29 +124,42 @@
         </button>
       </div>
     </div>
-    <a href="#events" class="mobile-tickets">Réserver mes Billets</a>
-  </div>  <main id="main-content">
+  </div>
+
+  <main id="main-content">
     <section id="hero" aria-label="Accueil Circuit de Chimay">
       <div class="hero-slides" aria-hidden="true">
         <div class="hero-slide active" data-slide="0">
-          <img src="assets/hero_circuit_chimay.png" alt="Vue aerienne du Circuit de Chimay" loading="eager" fetchpriority="high"/>
+          <img src="assets/open_trophy.jpg" alt="Chimay Open Trophy 2026 — Superbike IRRC" loading="eager" fetchpriority="high"/>
         </div>
         <div class="hero-slide" data-slide="1">
-          <img src="assets/event_chimay_moto.png" alt="Course moto au Circuit de Chimay" loading="lazy"/>
+          <img src="assets/classic_bikes.jpg" alt="Authentic Classic Bikes — Moto Vintage #53" loading="lazy"/>
         </div>
         <div class="hero-slide" data-slide="2">
-          <img src="assets/building_restaurant_chimay.png" alt="Batiment VIP du Circuit de Chimay" loading="lazy"/>
+          <img src="assets/supermoto_1.jpg" alt="Supermoto Chimay — Prise d'angle spectaculaire" loading="lazy"/>
         </div>
         <div class="hero-slide" data-slide="3">
+          <img src="assets/vw_bugin.jpg" alt="European Bug-In — Rassemblement mondial VW" loading="lazy"/>
+        </div>
+        <div class="hero-slide" data-slide="4">
+          <img src="assets/ford_escort_rally.jpg" alt="Ford Escort Rally Special — Aux stands" loading="lazy"/>
+        </div>
+        <div class="hero-slide" data-slide="5">
+          <img src="assets/chimay_complex_real.png" alt="Complexe moderne et Paddock du Circuit de Chimay" loading="lazy"/>
+        </div>
+        <div class="hero-slide" data-slide="6">
           <img src="assets/trappist_beer_chimay.png" alt="Biere Trappiste de Chimay" loading="lazy"/>
         </div>
       </div>
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-indicators" role="tablist" aria-label="Navigation carrousel">
-        <div class="hero-dot active" role="tab" aria-selected="true" tabindex="0" data-dot="0"></div>
-        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="1"></div>
-        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="2"></div>
-        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="3"></div>
+        <div class="hero-dot active" role="tab" aria-selected="true" tabindex="0" data-dot="0" aria-label="Slide 1 — Chimay Open Trophy"></div>
+        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="1" aria-label="Slide 2 — Authentic Classic Bikes"></div>
+        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="2" aria-label="Slide 3 — Supermoto Chimay"></div>
+        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="3" aria-label="Slide 4 — European Bug-In"></div>
+        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="4" aria-label="Slide 5 — Ford Escort Rally Special"></div>
+        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="5" aria-label="Slide 6 — Complexe & Paddock"></div>
+        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="6" aria-label="Slide 7 — Culture Trappiste"></div>
       </div>
       <div class="hero-content">
         <p class="hero-sub">Le circuit routier mythique de Chimay &mdash; la où la vitesse rencontre l'art de vivre belge. Événements, restaurant panoramique et culture Trappiste depuis 1926.</p>
@@ -155,9 +217,8 @@
           <article class="event-card visible-card reveal" data-category="moto">
             <div class="event-card-inner">
               <div class="event-img">
-                <img src="assets/event_chimay_moto.png" alt="Chimay Open Trophy 2026" loading="lazy"/>
+                <img src="assets/open_trophy.jpg" alt="Chimay Open Trophy 2026" loading="lazy"/>
                 <div class="event-img-overlay" aria-hidden="true"></div>
-                <span class="event-status open" role="status">Billetterie Ouverte</span>
               </div>
               <div class="event-body">
                 <div class="event-category">Motos Modernes &middot; IRRC &middot; Superbike</div>
@@ -170,9 +231,8 @@
           <article class="event-card visible-card reveal" data-category="classics" style="transition-delay:.08s">
             <div class="event-card-inner">
               <div class="event-img">
-                <img src="assets/event_chimay_moto.png" alt="Authentic Classic Bikes" loading="lazy"/>
+                <img src="assets/classic_bikes.jpg" alt="Authentic Classic Bikes Chimay" loading="lazy"/>
                 <div class="event-img-overlay" aria-hidden="true"></div>
-                <span class="event-status open" role="status">Billetterie Ouverte</span>
               </div>
               <div class="event-body">
                 <div class="event-category">Classics &amp; Vintage &middot; Side-Cars</div>
@@ -185,9 +245,8 @@
           <article class="event-card visible-card reveal" data-category="rassemblement" style="transition-delay:.16s">
             <div class="event-card-inner">
               <div class="event-img">
-                <img src="assets/vw_bugin_event.png" alt="European Bug-In VW" loading="lazy"/>
+                <img src="assets/vw_bugin.jpg" alt="European Bug-In Chimay" loading="lazy"/>
                 <div class="event-img-overlay" aria-hidden="true"></div>
-                <span class="event-status soon" role="status">Bientot</span>
               </div>
               <div class="event-body">
                 <div class="event-category">Rassemblement Mondial &middot; VW</div>
@@ -199,10 +258,24 @@
           </article>
           <article class="event-card visible-card reveal" data-category="moto" style="transition-delay:.24s">
             <div class="event-card-inner">
-              <div class="event-img">
-                <img src="assets/supermoto_event.png" alt="Supermoto Chimay" loading="lazy"/>
+              <div class="event-img card-carousel" id="supermoto-carousel">
+                <div class="carousel-track">
+                  <div class="carousel-slide active"><img src="assets/supermoto_1.jpg" alt="Supermoto Chimay — Prise d'angle spectaculaire" loading="lazy"/></div>
+                  <div class="carousel-slide"><img src="assets/supermoto_2.jpg" alt="Supermoto Chimay — Pilote #55 en piste" loading="lazy"/></div>
+                  <div class="carousel-slide"><img src="assets/supermoto_3.jpg" alt="Supermoto Chimay — Peloton en course sur le circuit" loading="lazy"/></div>
+                </div>
                 <div class="event-img-overlay" aria-hidden="true"></div>
-                <span class="event-status open" role="status">Billetterie Ouverte</span>
+                <button class="carousel-btn carousel-prev" aria-label="Photo précédente" title="Précédente">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 12L6 8l4-4"/></svg>
+                </button>
+                <button class="carousel-btn carousel-next" aria-label="Photo suivante" title="Suivante">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 4l4 4-4 4"/></svg>
+                </button>
+                <div class="carousel-dots" role="tablist" aria-label="Photos Supermoto">
+                  <button class="carousel-dot active" role="tab" aria-selected="true" data-idx="0" aria-label="Photo 1"></button>
+                  <button class="carousel-dot" role="tab" aria-selected="false" data-idx="1" aria-label="Photo 2"></button>
+                  <button class="carousel-dot" role="tab" aria-selected="false" data-idx="2" aria-label="Photo 3"></button>
+                </div>
               </div>
               <div class="event-body">
                 <div class="event-category">Supermoto &middot; Terre &amp; Asphalte</div>
@@ -215,9 +288,8 @@
           <article class="event-card visible-card reveal" data-category="auto" style="transition-delay:.32s">
             <div class="event-card-inner">
               <div class="event-img">
-                <img src="assets/hero_circuit_chimay.png" alt="Ford Escort Rally Special" loading="lazy"/>
+                <img src="assets/ford_escort_rally.jpg" alt="Ford Escort Rally Special Chimay" loading="lazy"/>
                 <div class="event-img-overlay" aria-hidden="true"></div>
-                <span class="event-status soon" role="status">Bientot</span>
               </div>
               <div class="event-body">
                 <div class="event-category">Autos &amp; Rallye &middot; Nocturne</div>
@@ -466,7 +538,7 @@
         <div class="building-grid">
           <div class="building-visual reveal">
             <div class="building-visual-inner">
-              <img src="assets/building_restaurant_chimay.png" alt="Batiment VIP et restaurant panoramique" loading="lazy"/>
+              <img src="assets/chimay_complex_real.png" alt="Batiment et paddock du Circuit de Chimay" loading="lazy"/>
             </div>
           </div>
           <div class="building-text">

@@ -5,6 +5,7 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+
 // ─── Scroll progress bar ──────────────────────────────────────
 const progressBar = document.getElementById('scroll-progress');
 if (progressBar) {
@@ -43,6 +44,12 @@ function applyTheme(theme) {
   
   root.setAttribute('data-theme', theme);
   root.setAttribute('data-system-pref', systemPref);
+  
+  const isLight = theme === 'light' || (theme === 'system' && systemPref === 'light');
+  if (header) {
+    header.style.setProperty('background-color', isLight ? '#FFFFFF' : '#0B0C10', 'important');
+    header.style.setProperty('background', isLight ? '#FFFFFF' : '#0B0C10', 'important');
+  }
   
   // Sync all theme buttons on the page (desktop & mobile)
   document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
@@ -189,6 +196,67 @@ filterBtns.forEach(btn => {
     });
   });
 });
+
+// ─── Event Card Image Carousel (Supermoto & more) ────────────
+function initCardCarousels() {
+  document.querySelectorAll('.card-carousel').forEach(carousel => {
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.querySelectorAll('.carousel-dot');
+    const prevBtn = carousel.querySelector('.carousel-prev');
+    const nextBtn = carousel.querySelector('.carousel-next');
+    if (slides.length <= 1) return;
+
+    let current = 0;
+    let timer = null;
+
+    function goTo(idx) {
+      current = (idx + slides.length) % slides.length;
+      slides.forEach((s, i) => s.classList.toggle('active', i === current));
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+        d.setAttribute('aria-selected', String(i === current));
+      });
+    }
+
+    function startTimer() {
+      stopTimer();
+      timer = setInterval(() => goTo(current + 1), 3600);
+    }
+
+    function stopTimer() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    prevBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      goTo(current - 1);
+      startTimer();
+    });
+
+    nextBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      goTo(current + 1);
+      startTimer();
+    });
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        goTo(idx);
+        startTimer();
+      });
+    });
+
+    carousel.addEventListener('mouseenter', stopTimer);
+    carousel.addEventListener('mouseleave', startTimer);
+
+    startTimer();
+  });
+}
+initCardCarousels();
 
 // ─── Track SVG — historic / modern toggle ─────────────────────
 const btnModern  = document.getElementById('btn-modern');

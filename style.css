@@ -208,6 +208,80 @@ body::after {
   height: 1px;
   background: linear-gradient(to right, transparent, var(--color-border), transparent);
 }
+/* ============================================================
+   ── LOADER — Circuit Trace Animation ──
+============================================================ */
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0B0C10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+#loader.loaded {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+.loader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.loader-track {
+  width: clamp(200px, 40vw, 340px);
+  height: auto;
+}
+
+/* Tracé progressif — se dessine pendant le chargement */
+#loader-track-draw {
+  stroke-dasharray: 2200;
+  stroke-dashoffset: 2200;
+  animation: loader-draw 2.4s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+}
+@keyframes loader-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Logo & texte sous le circuit */
+.loader-text {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: loader-text-in 0.5s 1.8s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+@keyframes loader-text-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+.loader-logo-mark {
+  width: 36px;
+  height: 36px;
+  background: #E63946;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+.loader-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+  color: #fff;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
 
 /* ============================================================
    ── SCROLL PROGRESS BAR ──
@@ -231,17 +305,15 @@ body::after {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  background: rgba(11, 12, 16, 0.96);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  background: #0B0C10 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
   transition: background var(--transition-med), box-shadow var(--transition-med);
 }
 [data-theme="light"] #header {
-  background: rgba(255, 255, 255, 0.96);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  background: #FFFFFF !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .header-inner {
@@ -340,6 +412,9 @@ body::after {
   padding: 3px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-border);
+}
+@media (max-width: 900px) {
+  .header-cta .theme-toggle { display: none; }
 }
 .theme-toggle-btn {
   display: inline-flex;
@@ -950,11 +1025,83 @@ body::after {
 }
 
 .event-img { position: relative; overflow: hidden; height: 220px; }
-.event-img img { transition: transform 0.7s var(--ease-spring); }
+.event-img img { transition: transform 0.7s var(--ease-spring); width: 100%; height: 100%; object-fit: cover; }
 .event-card:hover .event-img img { transform: scale(1.06); }
 .event-img-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(21,24,32,0.85) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Card Image Carousel ── */
+.card-carousel { position: relative; }
+.carousel-track { position: relative; width: 100%; height: 100%; }
+.carousel-slide {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1);
+  pointer-events: none;
+}
+.carousel-slide.active { opacity: 1; pointer-events: all; }
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(11,12,16,0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all var(--transition-fast);
+}
+.carousel-btn svg { width: 13px; height: 13px; }
+.carousel-prev { left: 8px; }
+.carousel-next { right: 8px; }
+.event-card:hover .carousel-btn { opacity: 0.95; }
+.carousel-btn:hover {
+  background: var(--color-racing);
+  border-color: var(--color-racing);
+  transform: translateY(-50%) scale(1.1);
+  opacity: 1;
+}
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  background: rgba(11,12,16,0.65);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+.carousel-dot.active {
+  width: 16px;
+  border-radius: 4px;
+  background: var(--color-racing);
 }
 
 /* Live badge + status */
@@ -1555,7 +1702,9 @@ body::after {
   .section-container { padding: 0 var(--space-sm); }
   .header-inner { padding: 0.85rem var(--space-sm); }
   .hero-content { padding: var(--space-xl) var(--space-sm) 180px; }
-  .hero-indicators { left: var(--space-sm); bottom: 100px; }
+  .hero-indicators { left: var(--space-sm); bottom: 100px; gap: 0.35rem; }
+  .hero-dot { width: 16px; height: 3px; }
+  .hero-dot.active { width: 32px; }
   .event-banner-inner { padding: 0.85rem var(--space-sm); gap: 0.75rem; }
   .building-visual { height: auto; aspect-ratio: 16/10; min-height: 240px; }
   .track-svg-inner { min-height: 260px; padding: var(--space-sm); }
