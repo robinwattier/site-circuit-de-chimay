@@ -5,7 +5,7 @@ Tu es un Lead UI/UX Designer et Directeur Artistique Senior spécialisé dans le
 L'objectif est de concevoir le cahier des charges et la structure visuelle/fonctionnelle pour la refonte complète du site officiel du **Circuit de Chimay (Belgique)** (`circuit.be`).
 
 Le projet doit transformer le site en une plateforme moderne, immersive et performante en fusionnant trois piliers majores :
-1. **L'Héritage & le Lifestyle "Chimay"** : Mettre en valeur le circuit routier mythique (depuis 1929), le tout nouveau bâtiment d'accueil (avec son restaurant gastronomique/brasserie et sa terrasse panoramique en hauteur sur la ligne droite) et la culture incontournable de la bière Trappiste de Chimay.
+1. **L'Héritage & le Lifestyle "Chimay"** : Mettre en valeur le circuit routier mythique (depuis 1926), le tout nouveau bâtiment d'accueil (avec son restaurant gastronomique/brasserie et sa terrasse panoramique en hauteur sur la ligne droite) et la culture incontournable de la bière Trappiste de Chimay.
 2. **The Magarigawa Club (Japon)** : Utilisé exclusivement pour la **Hero Section / Introduction**. Un carrousel/vidéo d'ambiance ultra-haut de gamme et cinématographique montrant la diversité des activités (autos, motos, supermoto, classics, réceptions).
 3. **Silverstone Circuit (Royaume-Uni)** : La référence absolue pour tout le reste du site (navigation, mega-menu, hiérarchie de l'information, grille d'événements, fiches techniques et tunnel de billetterie fluide).
 

@@ -30,6 +30,56 @@ if (backToTop) {
   });
 }
 
+// ─── Theme Controller (Dark / Light / System) ─────────────────
+const THEME_STORAGE_KEY = 'chimay_theme';
+
+function getSystemTheme() {
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+}
+
+function applyTheme(theme) {
+  const root = document.documentElement;
+  const systemPref = getSystemTheme();
+  
+  root.setAttribute('data-theme', theme);
+  root.setAttribute('data-system-pref', systemPref);
+  
+  // Sync all theme buttons on the page (desktop & mobile)
+  document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+    const btnVal = btn.getAttribute('data-theme-val');
+    const isActive = btnVal === theme;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', String(isActive));
+  });
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) || 'system';
+  applyTheme(savedTheme);
+
+  // Click handler for theme buttons
+  document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selected = btn.getAttribute('data-theme-val');
+      if (!selected) return;
+      localStorage.setItem(THEME_STORAGE_KEY, selected);
+      applyTheme(selected);
+    });
+  });
+
+  // Listen for OS system theme changes
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+      const current = localStorage.getItem(THEME_STORAGE_KEY) || 'system';
+      if (current === 'system') {
+        applyTheme('system');
+      }
+    });
+  }
+}
+
+initTheme();
+
 // ─── Mobile menu (hamburger morph → X, stagger reveal) ───────
 const hamburger = document.getElementById('hamburger-btn');
 const mobileMenu = document.getElementById('mobile-menu');
