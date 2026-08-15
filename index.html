@@ -10,7 +10,7 @@
   <title>Circuit de Chimay — Speed, Heritage &amp; Trappist Legend Since 1926</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=3.0" />
+  <link rel="stylesheet" href="style.css?v=8.0" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
@@ -64,7 +64,7 @@
   </script>
 
   <div id="scroll-progress" aria-hidden="true"></div>
-  <header id="header" role="banner" style="background-color: #0B0C10 !important;">
+  <header id="header" role="banner">
     <div class="header-inner">
       <a href="/" class="logo" aria-label="Circuit de Chimay Accueil">
         <div class="logo-mark" aria-hidden="true">C</div>
@@ -80,17 +80,7 @@
         <a href="#footer" class="nav-link">Infos Pratiques</a>
       </nav>
       <div class="header-cta">
-        <div class="theme-toggle" role="group" aria-label="Choix du thème">
-          <button class="theme-toggle-btn active" data-theme-val="dark" aria-label="Thème sombre" title="Sombre">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M13.5 9.5A6 6 0 116.5 2.5a4.5 4.5 0 007 7z"/></svg>
-          </button>
-          <button class="theme-toggle-btn" data-theme-val="light" aria-label="Thème clair" title="Clair">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41"/></svg>
-          </button>
-          <button class="theme-toggle-btn" data-theme-val="system" aria-label="Thème système" title="Système">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="3" width="12" height="8" rx="1.5"/><path d="M6 14h4M8 11v3"/></svg>
-          </button>
-        </div>
+
         <div class="lang-toggle" aria-label="Langue">
           <button class="active" aria-pressed="true">FR</button>
           <button aria-pressed="false">NL</button>
@@ -110,18 +100,12 @@
       <a href="#building" class="mobile-nav-link">Infrastructures &amp; Restaurant</a>
       <a href="#footer" class="mobile-nav-link">Infos Pratiques</a>
     </nav>
-    <div class="mobile-theme-row">
-      <span>Thème</span>
-      <div class="theme-toggle" role="group" aria-label="Choix du thème mobile">
-        <button class="theme-toggle-btn active" data-theme-val="dark" aria-label="Thème sombre">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M13.5 9.5A6 6 0 116.5 2.5a4.5 4.5 0 007 7z"/></svg>
-        </button>
-        <button class="theme-toggle-btn" data-theme-val="light" aria-label="Thème clair">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41"/></svg>
-        </button>
-        <button class="theme-toggle-btn" data-theme-val="system" aria-label="Thème système">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="3" width="12" height="8" rx="1.5"/><path d="M6 14h4M8 11v3"/></svg>
-        </button>
+    <div class="mobile-lang-row">
+      <span>Langue</span>
+      <div class="lang-toggle" aria-label="Langue">
+        <button class="active" aria-pressed="true">FR</button>
+        <button aria-pressed="false">NL</button>
+        <button aria-pressed="false">EN</button>
       </div>
     </div>
   </div>
@@ -153,13 +137,13 @@
       </div>
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-indicators" role="tablist" aria-label="Navigation carrousel">
-        <div class="hero-dot active" role="tab" aria-selected="true" tabindex="0" data-dot="0" aria-label="Slide 1 — Chimay Open Trophy"></div>
-        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="1" aria-label="Slide 2 — Authentic Classic Bikes"></div>
-        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="2" aria-label="Slide 3 — Supermoto Chimay"></div>
-        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="3" aria-label="Slide 4 — European Bug-In"></div>
-        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="4" aria-label="Slide 5 — Ford Escort Rally Special"></div>
-        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="5" aria-label="Slide 6 — Complexe & Paddock"></div>
-        <div class="hero-dot" role="tab" aria-selected="false" tabindex="0" data-dot="6" aria-label="Slide 7 — Culture Trappiste"></div>
+        <button class="hero-dot active" role="tab" aria-selected="true" data-dot="0" aria-label="Slide 1 — Chimay Open Trophy"></button>
+        <button class="hero-dot" role="tab" aria-selected="false" data-dot="1" aria-label="Slide 2 — Authentic Classic Bikes"></button>
+        <button class="hero-dot" role="tab" aria-selected="false" data-dot="2" aria-label="Slide 3 — Supermoto Chimay"></button>
+        <button class="hero-dot" role="tab" aria-selected="false" data-dot="3" aria-label="Slide 4 — European Bug-In"></button>
+        <button class="hero-dot" role="tab" aria-selected="false" data-dot="4" aria-label="Slide 5 — Ford Escort Rally Special"></button>
+        <button class="hero-dot" role="tab" aria-selected="false" data-dot="5" aria-label="Slide 6 — Complexe & Paddock"></button>
+        <button class="hero-dot" role="tab" aria-selected="false" data-dot="6" aria-label="Slide 7 — Culture Trappiste"></button>
       </div>
       <div class="hero-content">
         <p class="hero-sub">Le circuit routier mythique de Chimay &mdash; la où la vitesse rencontre l'art de vivre belge. Événements, restaurant panoramique et culture Trappiste depuis 1926.</p>

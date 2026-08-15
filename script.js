@@ -31,61 +31,8 @@ if (backToTop) {
   });
 }
 
-// ─── Theme Controller (Dark / Light / System) ─────────────────
-const THEME_STORAGE_KEY = 'chimay_theme';
-
-function getSystemTheme() {
-  return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-}
-
-function applyTheme(theme) {
-  const root = document.documentElement;
-  const systemPref = getSystemTheme();
-  
-  root.setAttribute('data-theme', theme);
-  root.setAttribute('data-system-pref', systemPref);
-  
-  const isLight = theme === 'light' || (theme === 'system' && systemPref === 'light');
-  if (header) {
-    header.style.setProperty('background-color', isLight ? '#FFFFFF' : '#0B0C10', 'important');
-    header.style.setProperty('background', isLight ? '#FFFFFF' : '#0B0C10', 'important');
-  }
-  
-  // Sync all theme buttons on the page (desktop & mobile)
-  document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
-    const btnVal = btn.getAttribute('data-theme-val');
-    const isActive = btnVal === theme;
-    btn.classList.toggle('active', isActive);
-    btn.setAttribute('aria-pressed', String(isActive));
-  });
-}
-
-function initTheme() {
-  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) || 'system';
-  applyTheme(savedTheme);
-
-  // Click handler for theme buttons
-  document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const selected = btn.getAttribute('data-theme-val');
-      if (!selected) return;
-      localStorage.setItem(THEME_STORAGE_KEY, selected);
-      applyTheme(selected);
-    });
-  });
-
-  // Listen for OS system theme changes
-  if (window.matchMedia) {
-    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
-      const current = localStorage.getItem(THEME_STORAGE_KEY) || 'system';
-      if (current === 'system') {
-        applyTheme('system');
-      }
-    });
-  }
-}
-
-initTheme();
+// Dark theme default
+document.documentElement.setAttribute('data-theme', 'dark');
 
 // ─── Mobile menu (hamburger morph → X, stagger reveal) ───────
 const hamburger = document.getElementById('hamburger-btn');
@@ -154,7 +101,40 @@ dots.forEach((dot, i) => {
 const heroEl = document.getElementById('hero');
 heroEl?.addEventListener('mouseenter', stopCarousel);
 heroEl?.addEventListener('mouseleave', startCarousel);
-startCarousel();
+
+// ─── Hero carousel — Swipe / Pointer Events (Apple: 1:1 tracking) ──
+let _swipeStartX = 0;
+let _swipeStartY = 0;
+let _swipeActive = false;
+
+if (heroEl) {
+  heroEl.addEventListener('pointerdown', (e) => {
+    _swipeStartX = e.clientX;
+    _swipeStartY = e.clientY;
+    _swipeActive = true;
+  }, { passive: true });
+
+  heroEl.addEventListener('pointerup', (e) => {
+    if (!_swipeActive) return;
+    _swipeActive = false;
+    const dx = e.clientX - _swipeStartX;
+    const dy = e.clientY - _swipeStartY;
+    // Only trigger if horizontal swipe dominates (> 50px, > 1.5× vertical)
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      stopCarousel();
+      goToSlide(dx < 0 ? currentSlide + 1 : currentSlide - 1);
+      startCarousel();
+    }
+  }, { passive: true });
+
+  heroEl.addEventListener('pointercancel', () => { _swipeActive = false; }, { passive: true });
+}
+
+// Respect prefers-reduced-motion — don't auto-advance
+const _prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!_prefersReducedMotion) {
+  startCarousel();
+}
 
 // ─── Countdown Timer ──────────────────────────────────────────
 const EVENT_DATE = new Date('2026-05-23T08:00:00');
@@ -339,9 +319,12 @@ document.addEventListener('click', () => {
 const langBtns = document.querySelectorAll('.lang-toggle button');
 langBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    langBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
-    btn.classList.add('active');
-    btn.setAttribute('aria-pressed', 'true');
+    const lang = btn.textContent.trim();
+    langBtns.forEach(b => {
+      const match = b.textContent.trim() === lang;
+      b.classList.toggle('active', match);
+      b.setAttribute('aria-pressed', String(match));
+    });
   });
 });
 
