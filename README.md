@@ -78,8 +78,15 @@ npx serve .
 
 ---
 
+## 🌐 Déploiement
+
+Le site est hébergé et déployé automatiquement via **GitHub Pages** sur [robinwattier.github.io/site-circuit-de-chimay](https://robinwattier.github.io/site-circuit-de-chimay/).
+
+---
+
 ## 📄 Licence & Crédits
 
 - **Projet** : Circuit de Chimay
 - **Conception & Développement** : Robin Wattier
 - Tous droits réservés &copy; 1926–2026 Circuit de Chimay.
+
