@@ -60,7 +60,8 @@ html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  overflow-x: clip;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
@@ -69,12 +70,18 @@ body {
   font-family: var(--font-body);
   font-weight: 400;
   line-height: 1.6;
-  overflow-x: clip;
+  overflow-x: hidden;
   width: 100%;
-  min-width: 100%;
+  max-width: 100vw;
+  min-width: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -816,23 +823,31 @@ body::after {
   height: 100%;
   box-shadow: inset 0 1px 1px rgba(255,255,255,0.08);
 }
+.building-visual-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
 
-.building-text { padding: var(--space-sm) 0; }
+.building-text { padding: var(--space-sm) 0; min-width: 0; }
 .building-text h2 {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-size: clamp(1.85rem, 3.5vw, 3.25rem);
   font-weight: 800;
   line-height: 0.98;
   letter-spacing: -0.02em;
   text-transform: uppercase;
   color: var(--color-heading);
   margin: 1rem 0 1.25rem;
+  overflow-wrap: break-word;
 }
 .building-text p {
   font-size: 0.92rem;
   line-height: 1.8;
   color: var(--color-text-sub);
   margin-bottom: 0.85rem;
+  overflow-wrap: break-word;
 }
 
 .building-features {
@@ -1727,7 +1742,10 @@ body::after {
 
   /* Container */
   .section-container {
-    padding: 0 1.25rem;
+    padding: 0 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   /* Section spacing */
@@ -1895,13 +1913,14 @@ body::after {
   }
   .events-header h2 {
     font-family: var(--font-display);
-    font-size: clamp(2.2rem, 8.5vw, 2.85rem);
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
     font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.02em;
+    line-height: 0.98;
+    letter-spacing: -0.01em;
     text-transform: uppercase;
     color: #fff;
     margin-top: 0.75rem;
+    overflow-wrap: break-word;
   }
   .events-header p {
     font-size: 0.85rem;
@@ -2000,13 +2019,14 @@ body::after {
   }
   .track-info h2 {
     font-family: var(--font-display);
-    font-size: clamp(2.2rem, 8.5vw, 2.85rem);
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
     font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.02em;
+    line-height: 0.98;
+    letter-spacing: -0.01em;
     text-transform: uppercase;
     color: #fff;
     margin: 0.75rem 0 0.85rem;
+    overflow-wrap: break-word;
   }
   .track-info h2 em {
     font-style: normal;
@@ -2104,6 +2124,8 @@ body::after {
   .building-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    width: 100%;
+    min-width: 0;
   }
   .building-visual {
     height: auto;
@@ -2112,26 +2134,39 @@ body::after {
     border-radius: 20px;
     background: rgba(255,255,255,0.03);
     border: 1px solid var(--color-border);
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
   .building-visual-inner {
     border-radius: 14px;
     overflow: hidden;
     height: 100%;
+    width: 100%;
   }
   .building-visual-inner img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 30%;
+  }
+  .building-text {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 0;
   }
   .building-text h2 {
     font-family: var(--font-display);
-    font-size: clamp(2.2rem, 8.5vw, 3rem);
+    font-size: clamp(1.55rem, 6.8vw, 2.2rem);
     font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.02em;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
     text-transform: uppercase;
     color: #fff;
     margin: 0.85rem 0 1rem;
+    overflow-wrap: break-word;
+    word-break: normal;
   }
   .building-text h2 em {
     font-style: normal;
@@ -2142,20 +2177,43 @@ body::after {
     line-height: 1.65;
     color: var(--color-text-sub);
     margin-bottom: 0.85rem;
+    overflow-wrap: break-word;
   }
   .building-features {
     grid-template-columns: 1fr;
     gap: 0.5rem;
     margin: 1rem 0 1.25rem;
+    width: 100%;
+    min-width: 0;
   }
   .feature-chip {
     padding: 0.65rem 0.85rem;
     font-size: 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   /* Trackdays & B2B mobile */
+  .td-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: #fff;
+    overflow-wrap: break-word;
+  }
   .td-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    min-width: 0;
+  }
+  .td-card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
   .td-card-header {
     padding: 1.25rem;
