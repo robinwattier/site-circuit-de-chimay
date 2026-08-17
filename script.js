@@ -337,14 +337,21 @@ const revealObserver = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.08,
-  rootMargin: '0px 0px -40px 0px'
+  threshold: 0.01,
+  rootMargin: '0px 0px 80px 0px'
 });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+// Safety fallback: ensure all content becomes visible even on mobile quirks
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+  }, 1000);
+});
+
 // ─── GSAP scroll animations ───────────────────────────────────
-if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && window.innerWidth > 768) {
 
   // Hero title — cinematic entrance
   gsap.from('#hero-title', {

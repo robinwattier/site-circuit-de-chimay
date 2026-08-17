@@ -2,7 +2,7 @@
 <html lang="fr" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content="Circuit de Chimay — Vitesse, Heritage et Legende Trappiste depuis 1926. 4,52 km de piste routiere legendaire en Belgique." />
   <meta property="og:title" content="Circuit de Chimay — Speed, Heritage and Trappist Legend Since 1926" />
   <meta property="og:type" content="website" />
@@ -10,7 +10,8 @@
   <title>Circuit de Chimay — Speed, Heritage &amp; Trappist Legend Since 1926</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=8.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=8.1" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
@@ -55,11 +56,18 @@
       function hide() {
         if (done) return;
         done = true;
-        loader.classList.add('loaded');
-        setTimeout(function() { loader.remove(); }, 800);
+        if (loader) {
+          loader.classList.add('loaded');
+          setTimeout(function() { loader.remove(); }, 600);
+        }
       }
-      window.addEventListener('load', hide);
-      setTimeout(hide, 4000);
+      if (document.readyState === 'complete') {
+        setTimeout(hide, 300);
+      } else {
+        window.addEventListener('load', hide);
+        document.addEventListener('DOMContentLoaded', function() { setTimeout(hide, 800); });
+        setTimeout(hide, 1800);
+      }
     })();
   </script>
 
@@ -527,7 +535,7 @@
           </div>
           <div class="building-text">
             <span class="eyebrow reveal">Le Complexe</span>
-            <h2 id="building-title" class="reveal">Plus qu'un Circuit.<br/><em style="color:var(--color-gold)">Une Destination.</em></h2>
+            <h2 id="building-title" class="reveal">Plus qu'un<br/>Circuit.<br/><em style="color:var(--color-gold)">Une<br/>Destination.</em></h2>
             <p class="reveal">Au coeur du mythique circuit routier, notre nouveau batiment d'accueil redefinit l'experience motorsport belge. Il integre un restaurant gastronomique, une brasserie et la legendaire Trappiste de Chimay.</p>
             <p class="reveal">La terrasse panoramique offre une vue a 180 degres sur la ligne droite des stands — le meilleur point de vue du circuit.</p>
             <div class="building-features reveal">
