@@ -137,7 +137,15 @@ if (!_prefersReducedMotion) {
 }
 
 // ─── Countdown Timer ──────────────────────────────────────────
-const EVENT_DATE = new Date('2026-05-23T08:00:00');
+function getNextEventDate() {
+  const currentYear = new Date().getFullYear();
+  let target = new Date(`${currentYear}-05-23T08:00:00`);
+  if (target.getTime() - Date.now() <= 0) {
+    target = new Date(`${currentYear + 1}-05-23T08:00:00`);
+  }
+  return target;
+}
+const EVENT_DATE = getNextEventDate();
 const cdDays  = document.getElementById('cd-days');
 const cdHours = document.getElementById('cd-hours');
 const cdMin   = document.getElementById('cd-min');
@@ -146,7 +154,7 @@ const cdSec   = document.getElementById('cd-sec');
 function pad(n) { return String(Math.max(0, n)).padStart(2, '0'); }
 
 function updateCountdown() {
-  const diff = EVENT_DATE - Date.now();
+  const diff = EVENT_DATE.getTime() - Date.now();
   if (diff <= 0) {
     [cdDays, cdHours, cdMin, cdSec].forEach(el => { if (el) el.textContent = '00'; });
     return;
